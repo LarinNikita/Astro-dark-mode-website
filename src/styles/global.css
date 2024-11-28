@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer base {
-  body {
-    @apply antialiased bg-zinc-900 text-zinc-300 font-body;
-  }
+    body {
+        @apply font-body bg-zinc-900 text-zinc-300 antialiased;
+    }
 }
