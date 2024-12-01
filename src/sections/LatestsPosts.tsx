@@ -1,4 +1,8 @@
+import { useRef } from 'react';
+
+import { useScroll, motion, useTransform } from 'framer-motion';
 import { twMerge } from 'tailwind-merge';
+
 import type { CollectionEntry } from 'astro:content';
 
 import { Tag } from '../components/Tag';
@@ -11,6 +15,14 @@ export const LatestsPostsSection = (props: {
     data: CollectionEntry<'blog'>[];
 }) => {
     const { data } = props;
+    const targetRef = useRef(null);
+
+    const { scrollYProgress } = useScroll({
+        target: targetRef,
+        offset: ['start end', 'start center'],
+    });
+
+    const marginTop = useTransform(scrollYProgress, [0, 1], [0, 64]);
 
     return (
         <section className="py-60">
@@ -57,7 +69,13 @@ export const LatestsPostsSection = (props: {
                             ),
                         )}
                     </div>
-                    <div className="mt-16 hidden flex-col gap-8 md:flex">
+                    <motion.div
+                        className="mt-16 hidden flex-col gap-8 md:flex"
+                        style={{
+                            marginTop,
+                        }}
+                        ref={targetRef}
+                    >
                         {data.map(
                             (
                                 { data: { title, description, category } },
@@ -88,7 +106,7 @@ export const LatestsPostsSection = (props: {
                                 </Card>
                             ),
                         )}
-                    </div>
+                    </motion.div>
                 </div>
                 <div className="mt-48 flex justify-center md:mt-32">
                     <CutCornerButton>Read the Blog</CutCornerButton>
