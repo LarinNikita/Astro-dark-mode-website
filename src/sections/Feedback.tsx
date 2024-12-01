@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { twMerge } from 'tailwind-merge';
 
 const feedbacks = [
@@ -27,8 +28,24 @@ export const FeedbackSection = () => {
             <div className="container">
                 <div className="grid grid-cols-1 gap-16 md:grid-cols-2 md:gap-8 lg:grid-cols-3 lg:gap-12">
                     {feedbacks.map((feedback, index) => (
-                        <blockquote
+                        <motion.blockquote
                             key={index}
+                            initial={{
+                                opacity: 0,
+                                y: 24,
+                            }}
+                            whileInView={{
+                                opacity: 1,
+                                y: 0,
+                            }}
+                            viewport={{
+                                once: true,
+                            }}
+                            transition={{
+                                delay: index * 0.5,
+                                ease: 'easeInOut',
+                                duration: 1,
+                            }}
                             className={twMerge(
                                 index === 2 && 'md:hidden lg:block',
                             )}
@@ -56,7 +73,7 @@ export const FeedbackSection = () => {
                                     </div>
                                 </div>
                             </cite>
-                        </blockquote>
+                        </motion.blockquote>
                     ))}
                 </div>
             </div>
