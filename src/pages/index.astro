@@ -8,6 +8,7 @@ import { HeroSection } from "../sections/Hero";
 import { FeaturesCardsSection } from "../sections/FeaturesCards";
 import { FeaturesGridSection } from "../sections/FeaturesGrid";
 import { LatestsPostsSection } from "../sections/LatestsPosts";
+import { FeedbackSection } from "../sections/Feedback";
 
 const posts = await getCollection("blog")
 const latestPosts = posts
@@ -24,4 +25,5 @@ const latestPosts = posts
   <FeaturesCardsSection/>
   <FeaturesGridSection/>
   <LatestsPostsSection data={latestPosts}/> 
+  <FeedbackSection/>
 </DefaultLayout>
