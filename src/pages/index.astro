@@ -10,6 +10,7 @@ import { FeaturesGridSection } from "../sections/FeaturesGrid";
 import { LatestsPostsSection } from "../sections/LatestsPosts";
 import { FeedbackSection } from "../sections/Feedback";
 import { CallToActionSection } from "../sections/CallToAction";
+import { FooterSection } from "../sections/Footer";
 
 const posts = await getCollection("blog")
 const latestPosts = posts
@@ -28,4 +29,5 @@ const latestPosts = posts
   <LatestsPostsSection data={latestPosts}/> 
   <FeedbackSection/>
   <CallToActionSection/> 
+  <FooterSection/> 
 </DefaultLayout>
